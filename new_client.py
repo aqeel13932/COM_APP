@@ -21,6 +21,8 @@ send_stream.setrate(RATE)
 receive_stream.setrate(RATE)
 send_stream.setformat(alsaaudio.PCM_FORMAT_S16_LE)
 receive_stream.setformat(alsaaudio.PCM_FORMAT_S16_LE)
+send_stream.setperiodsize(CHUNK)
+receive_stream.setperiodsize(CHUNK)
 print("Voice chat running")
 def receive_data():
     while True:
@@ -34,7 +36,7 @@ def receive_data():
 def send_data():
     while True:
         try:
-            l,data = send_stream.read(CHUNK)
+            l,data = send_stream.read()
             if l:
                 s.sendall(data)
         except:
