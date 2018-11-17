@@ -41,7 +41,7 @@ def send_data():
             l,data = send_stream.read()
             if l:
                 s.sendall(data)
-                sleep(0.001)
+                #sleep(0.001)
                 
         except:
             pass
